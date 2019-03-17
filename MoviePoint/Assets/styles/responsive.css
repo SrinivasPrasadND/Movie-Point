@@ -1,0 +1,469 @@
+@charset "utf-8";
+/* CSS Document */
+
+/******************************
+
+[Table of Contents]
+
+1. 1600px
+2. 1440px
+3. 1280px
+4. 1199px
+5. 1024px
+6. 991px
+7. 959px
+8. 880px
+9. 768px
+10. 767px
+11. 539px
+12. 479px
+13. 400px
+
+******************************/
+
+/************
+1. 1600px
+************/
+
+@media only screen and (max-width: 1600px)
+{
+	
+}
+
+/************
+2. 1440px
+************/
+
+@media only screen and (max-width: 1440px)
+{
+	
+}
+
+/************
+3. 1380px
+************/
+
+@media only screen and (max-width: 1380px)
+{
+	
+}
+
+/************
+3. 1280px
+************/
+
+@media only screen and (max-width: 1280px)
+{
+	
+}
+
+/************
+4. 1199px
+************/
+
+@media only screen and (max-width: 1199px)
+{
+	.search_form
+	{
+		width: 152px;
+		left: 134px;
+	}
+	.courses_background
+	{
+		top: 304px;
+		height: calc(100% - 304px);
+	}
+	.blog_title_container
+	{
+		width: 92%;
+	}
+	.footer_col
+	{
+		padding-right: 30px;
+	}
+}
+
+/************
+4. 1100px
+************/
+
+@media only screen and (max-width: 1100px)
+{
+	
+}
+
+/************
+5. 1024px
+************/
+
+@media only screen and (max-width: 1024px)
+{
+	
+}
+
+/************
+6. 991px
+************/
+
+@media only screen and (max-width: 991px)
+{
+	.main_nav_contaner,
+	.header_search,
+	.user
+	{
+		display: none;
+	}
+	.hamburger
+	{
+		display: inline-block;
+	}
+	.top_bar_social
+	{
+		margin-left: 33px;
+	}
+	.courses_background
+	{
+		top: 0;
+		height: 100%;
+	}
+	.course_col:not(:last-child)
+	{
+		margin-bottom: 30px;
+	}
+	.timer_container
+	{
+		margin-top: 57px;
+	}
+	.register_timer_container
+	{
+		padding-left: 0px;
+		top: auto;
+		-webkit-transform: none;
+		-moz-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
+		margin-top: 50px;
+	}
+	.event_col:not(:last-child)
+	{
+		margin-bottom: 40px;
+	}
+	.blog_right
+	{
+		height: auto;
+		margin-top: 40px;
+	}
+	.blog_image
+	{
+	    position: relative;
+	    top: auto;
+	    left: auto;
+	    width: 100%;
+	    height: 400px;
+	}
+	.footer_logo
+	{
+		margin-top: 0;
+		margin-bottom: 40px !important;
+	}
+	.footer_col
+	{
+		padding-right: 15px;
+	}
+	.footer_col:not(:last-child)
+	{
+		margin-bottom: 40px;
+	}
+	.footer_col:nth-child(2) > div
+	{
+		left: auto;
+	}
+	.footer_col:last-child > div
+	{
+		display: block;
+		float: none;
+	}
+	.footer_phone
+	{
+		margin-right: 42px;
+	}
+	.copyright_content
+	{
+		height: auto;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.cr_right
+	{
+		margin-top: 10px;
+	}
+	.footer_phone,
+	.footer_social
+	{
+		display: block;
+	}
+	.footer_social
+	{
+		margin-top: 8px;
+	}
+}
+
+/************
+7. 959px
+************/
+
+@media only screen and (max-width: 959px)
+{
+	
+}
+
+/************
+8. 880px
+************/
+
+@media only screen and (max-width: 880px)
+{
+	
+}
+
+/************
+9. 768px
+************/
+
+@media only screen and (max-width: 768px)
+{
+	
+}
+
+/************
+10. 767px
+************/
+
+@media only screen and (max-width: 767px)
+{
+	.top_bar
+	{
+		display: none;
+	}
+	.header.scrolled
+	{
+		top: 0px;
+	}
+	.header.scrolled .header_content
+	{
+		height: 60px;
+	}
+	.blog_category_col:not(:nth-last-child(-n+3))
+	{
+		margin-bottom: 0px;
+	}
+	.blog_category_col:not(:last-child)
+	{
+		margin-bottom: 30px;
+	}
+	.blog_image
+	{
+		height: 330px;
+	}
+}
+
+/************
+11. 575px
+************/
+
+@media only screen and (max-width: 575px)
+{
+	h1{font-size: 28px;}
+	h2{font-size: 24px;}
+	p{font-size: 13px;}
+	.header_content
+	{
+		height: 70px;
+	}
+	.logo_text
+	{
+		font-size: 20px;
+	}
+	.menu
+	{
+		width: 100%;
+		right: -100%;
+		padding-right: 20px;
+		padding-left: 20px;
+		padding-top: 75px;
+	}
+	.menu_close_container
+	{
+		right: 18px;
+	}
+	.menu .search
+	{
+		margin-bottom: 40px;
+	}
+	.menu_extra
+	{
+		right: 20px;
+		bottom: 10px;
+	}
+	.menu_phone, .menu_social
+	{
+		font-size: 10px;
+	}
+	.menu_social
+	{
+		margin-top: 0;
+	}
+	.home
+	{
+		height: 330px;
+	}
+	.home_content
+	{
+		top: 60%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	.home_title
+	{
+		font-size: 24px;
+	}
+	.home_button
+	{
+		width: 185px;
+		height: 36px;
+		margin-top: 28px;
+	}
+	.home_button a
+	{
+		line-height: 36px;
+		font-size: 10px;
+		font-size: 10px;
+	}
+	.course_body,
+	.course_footer
+	{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.course_title a
+	{
+		font-size: 16px;
+	}
+	.course_info ul li a
+	{
+		font-size: 13px;
+	}
+	.instructor_image_container
+	{
+		width: 120px;
+		height: 120px;
+		border: solid 8px #ffffff;
+	}
+	.instructor_image
+	{
+		top: -8px;
+		left: -8px;
+		width: 120px;
+		height: 120px;
+	}
+	.register_form_container
+	{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.register_timer_title,
+	.timer_num
+	{
+		font-size: 24px;
+	}
+	.form_button
+	{
+		height: 36px;
+		font-size: 10px;
+	}
+	.timer_list li:not(:last-child)
+	{
+		margin-right: 12px;
+	}
+	.event_date
+	{
+		width: 60px;
+		height: 60px;
+	}
+	.event_day
+	{
+		font-size: 24px;
+	}
+	.event_month
+	{
+		font-size: 9px;
+		margin-top: 8px;
+	}
+	.event_body
+	{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+	.event_title a
+	{
+		font-size: 16px;
+	}
+	.blog_title
+	{
+		font-size: 24px;
+	}
+	.blog_title_container
+	{
+		top: calc(100% - 105px);
+		padding-left: 20px;
+		padding-right: 15px;
+	}
+	.blog_right_title a
+	{
+		font-size: 24px;
+	}
+	.blog_right_text p
+	{
+		font-size: 13px;
+	}
+}
+
+/************
+11. 539px
+************/
+
+@media only screen and (max-width: 539px)
+{
+	
+}
+
+/************
+12. 480px
+************/
+
+@media only screen and (max-width: 480px)
+{
+	
+}
+
+/************
+13. 479px
+************/
+
+@media only screen and (max-width: 479px)
+{
+	
+}
+
+/************
+14. 400px
+************/
+
+@media only screen and (max-width: 400px)
+{
+	
+}

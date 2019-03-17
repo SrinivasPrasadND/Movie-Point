@@ -1,0 +1,229 @@
+﻿@model MoviePoint.Models.HomeVM
+@{
+	ViewBag.Title = "Index";
+}
+
+<div class="home">
+	<div class="home_background" style="background-image: url(https://secure.static.osnplay.osn.com/images/2018/9/3/image/2154_BX-MV011396-HERO.jpg);"></div>
+	<div class="home_content">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h1 class="home_title" style="color:white">Watch Your Favorite Movies Easily</h1>
+					<div class="home_button trans_200"><a id="grtStarted"><b style="color:white">get started</b></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Top 6 Movies -->
+
+<div class="courses" id="MovieBlock">
+	<div class="courses_background"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h2 class="section_title text-center">Latest And Top Movies For You</h2>
+			</div>
+		</div>
+		<div class="row courses_row">
+
+
+			<!-- Movie1 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[0].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[0].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By : <b class="text-primary">  @Model.Producers[0].Name</b></a></li>
+								<li><a href="#">@Model.Movies[0].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[0].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[0].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Movie2 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[1].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[1].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By : <b class="text-primary">  @Model.Producers[1].Name</b></a></li>
+								<li><a href="#">@Model.Movies[1].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[1].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[1].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Movie3 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[2].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[2].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By : <b class="text-primary">  @Model.Producers[2].Name</b> </a></li>
+								<li><a href="#">@Model.Movies[2].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[2].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[2].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row courses_row">
+
+			<!-- Movie4 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[3].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[3].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By :<b class="text-primary">  @Model.Producers[3].Name</b></a></li>
+								<li><a href="#">@Model.Movies[3].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[3].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[3].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+			<!-- 5ovie1 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[4].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[4].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By : <b class="text-primary">  @Model.Producers[4].Name</b></a></li>
+								<li><a href="#">@Model.Movies[4].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[4].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[4].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+			<!-- Movie6 -->
+			<div class="col-lg-4 course_col">
+				<div class="course">
+					<div class="course_image"><img src="@Model.Movies[5].ImageUrl" alt=""></div>
+					<div class="course_body">
+						<div class="course_title"><a href="course.html">@Model.Movies[5].Name</a></div>
+						<div class="course_info">
+							<ul>
+								<li><a href="instructors.html">By : <b class="text-primary">  @Model.Producers[5].Name</b></a></li>
+								<li><a href="#">@Model.Movies[5].Language</a></li>
+							</ul>
+						</div>
+						<div class="course_text">
+							<p>@Model.Movies[5].Description</p>
+						</div>
+					</div>
+					<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+						@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = Model.Movies[5].MovieId }, new { @class = "btn btn-sm btn-outline-primary" })
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- Movies End -->
+<!-- Instructors -->
+<div class="instructors">
+	<div class="instructors_background" style="background-image:url(/Assets/images/instructors_background.png)"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h2 class="section_title text-center">The Best Actors In OurIndustry</h2>
+			</div>
+		</div>
+		<div class="row instructors_row">
+
+			@foreach (var actor in Model.Actors)
+			{
+				<!-- Instructor -->
+				<div class="col-lg-4 instructor_col">
+					<div class="instructor text-center">
+						<div class="instructor_image_container">
+							<div class="instructor_image"><img src="@actor.ImageUrl" alt=""></div>
+						</div>
+						<div class="instructor_name"><a href="instructors.html">@actor.Name</a></div>
+						<div class="instructor_title">Teacher</div>
+						<div class="instructor_text">
+							<p>@actor.Bio</p>
+						</div>
+						<div class="instructor_social">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+			}
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+	$('#grtStarted').click(function () {
+		AutoFocus();
+	});
+
+	function AutoFocus() {
+		$('html,body').animate({
+			scrollTop: $('#MovieBlock').offset().top - 100
+		}, 1000);
+	};
+</script>

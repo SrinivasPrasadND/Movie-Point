@@ -1,0 +1,172 @@
+﻿@model MoviePoint.Models.WatchVM
+@{
+	ViewBag.Title = "WatchMovie";
+}
+
+
+<link href="~/Assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/animate.css">
+<link href="~/Assets/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/instructors.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/instructors_responsive.css">
+
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/course.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/course_responsive.css">
+
+
+<!-- Intro -->
+<div class="intro">
+	<div class="intro_background parallax-window" data-parallax="scroll" style="background-image:url(http://hdqwalls.com/wallpapers/justice-league-movie-poster-so.jpg)" data-speed="0.8"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="intro_container d-flex flex-column align-items-start justify-content-end">
+					<div class="intro_content">
+						<div class="row">
+							<div class="col-lg-9">
+								<div class=""><button class="btn btn btn-outline-danger" id="watchNow">Play Now</button></div>
+
+								<div class="intro_title" style="color:darkblue">@Model.Movie.Name</div>
+								<div class="intro_instructors" style="display:inline"><h4>By :</h4><h3 class="text-success">@Model.Producer.Name</h3></div>
+
+							</div>
+							<div class="col-lg-1"></div>
+							<div class="col-lg-2">
+								<br />
+								<div class="instructor_image_container">
+									<div class="instructor_image"><img src="@Model.Producer.ImageUrl" alt=""></div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="videoBlock">
+
+</div>
+
+<!-- Video -->
+<div class="video" style="margin-top:20%">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<div class="video_content">
+					<div class="video_container_outer">
+						@*<div class="video_overlay d-flex flex-column align-items-start justify-content-center">
+								<div>Be</div><div>The Best</div><div>Teacher</div>
+							</div>*@
+						<div class="video_container">
+							<video id="vid1" class="video-js vjs-default-skin" controls width="100%" height="100%" data-setup='{ "poster": "@Model.Movie.ImageUrl", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "@Model.Movie.MovieUrl"}], "youtube": { "iv_load_policy": 1 } }'></video>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- Course -->
+	<div class="course">
+		<div class="course_top"></div>
+		<div class="container">
+			<div class="row row-lg-eq-height">
+
+				<!-- Panels -->
+				<div class="col-lg-12">
+					<div class="tab_panels">
+
+						<!-- Tabs -->
+						<div class="course_tabs_container">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-9">
+										<div class="tabs d-flex flex-row align-items-center justify-content-start">
+											<div class="tab active">description</div>
+
+											<div class="tab">Actors</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Description -->
+						<div class="tab_panel description active">
+							<div class="panel_title text-primary">About @Model.Movie.Name</div>
+							<div class="panel_text">
+								<p class="text-dark">@Model.Movie.Description</p>
+							</div>
+						</div>
+
+
+
+						<!-- Members -->
+						<div class="tab_panel members">
+							<div class="panel_title">Actors in this Movie</div>
+							<div class="border border-primary members_list d-flex flex-row flex-wrap align-items-start justify-content-start">
+
+								@foreach (var item in Model.ActorList)
+								{
+									<!-- Instructor -->
+									<div class="col-lg-4 instructor_col ">
+										<div class="instructor text-center">
+											<div class="instructor_image_container">
+												<div class="instructor_image"><img src="@item.ImageUrl" alt=""></div>
+											</div>
+											<div class="instructor_name">@Html.ActionLink(item.Name, "AboutActor", "Home", new { id = item.ActorId }, new { @class = " " })</div>
+											<div class="instructor_title">Teacher</div>
+
+
+										</div>
+									</div>
+								}
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+<script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/styles/bootstrap4/popper.js"></script>
+<script src="~/Assets/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/Assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/Assets/plugins/easing/easing.js"></script>
+<script src="~/Assets/plugins/parallax-js-master/parallax.min.js"></script>
+<script src="~/Assets/plugins/progressbar/progressbar.min.js"></script>
+<script src="~/Assets/plugins/video-js/video.min.js"></script>
+<script src="~/Assets/plugins/video-js/Youtube.min.js"></script>
+<script src="~/Assets/js/instructors.js"></script>
+<script src="~/Assets/js/course.js"></script>
+
+
+
+<script>
+
+	$('#watchNow').click(function () {
+		AutoFocus();
+	});
+
+	function AutoFocus() {
+		$('html,body').animate({
+			scrollTop: $('#videoBlock').offset().top - 100
+		}, 1000);
+	};
+</script>

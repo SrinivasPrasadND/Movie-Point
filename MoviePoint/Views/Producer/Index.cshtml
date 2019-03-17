@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MoviePoint.Models.Producer>
+@{
+	ViewBag.Title = "Index";
+}
+
+<hr>
+<br />
+
+
+<div class="container ">
+
+	<div class="border border-dark" style="padding:5%">
+		<div>
+			<div class="row">
+				<div class="col">
+					<h2 class="section_title text-center">Our Industry Producers</h2>
+				</div>
+
+			</div>
+			@Html.ActionLink("Add Producer", "create", "Producer", null, new { @class = "btn btn-sm btn-outline-primary" })
+		</div>
+		<br />
+		<br />
+		<div class="container">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Actor Id</th>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Bio</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.ProducerId</td>
+							<td>@item.Name</td>
+							<td>@item.Age</td>
+							<td>@item.Bio</td>
+							<td>
+								<div>
+									@Html.ActionLink("Edit", "Update", "Producer", new { id = item.ProducerId }, new { @class = "btn btn-sm btn-outline-warning" })
+									@Html.ActionLink("Deleted", "Delete", "Producer", new { id = item.ProducerId }, new { @class = "btn btn-sm btn-outline-danger" })
+								</div>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+
+
+</div>
+<hr>
+
+

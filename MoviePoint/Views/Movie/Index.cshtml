@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MoviePoint.Models.Movie>
+@{
+	ViewBag.Title = "Index";
+}
+
+
+
+
+<hr />
+<br />
+<div class="container">
+	<div class="border border-dark" style="padding:5%">
+		<div>
+
+			<div class="row">
+				<div class="col">
+					<h2 class="section_title text-center">Popular Movies</h2>
+				</div>
+			</div>
+			@Html.ActionLink("Add Movie", "create", "Movie", null, new { @class = "btn btn-sm btn-outline-primary" })
+		</div>
+		<br /><br />
+		<div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Movie ID</th>
+						<th>Movie Name</th>
+						<th>Year Of Release</th>
+						<th>Producer Id</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model.Count() <= 0)
+					{
+						<div class="alert alert-danger" role="alert">
+							<h4 class="alert-heading">Well done!</h4>
+							<p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+							<hr>
+							<p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+						</div>
+					}
+					else
+					{
+						foreach (var item in Model)
+						{
+							<tr>
+								<td>@item.MovieId</td>
+								<td>@item.Name</td>
+								<td>@item.YearOfRelease</td>
+								<td>@item.ProducerId</td>
+								<td>
+									<div>
+										@Html.ActionLink(" Edit", "Update", "Movie", new { id = item.MovieId }, new { @class = "btn btn-sm btn-outline-warning " })
+										@Html.ActionLink("Delete ", "Delete", "movie", new { id = item.MovieId }, new { @class = "btn btn-sm btn-outline-danger" })
+									</div>
+								</td>
+							</tr>
+						}
+					}
+
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<hr />

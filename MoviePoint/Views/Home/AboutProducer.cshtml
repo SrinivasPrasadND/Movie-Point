@@ -1,0 +1,101 @@
+﻿@model MoviePoint.Models.ProducerDetails
+@{
+	ViewBag.Title = "AboutProducer";
+}
+
+<link href="~/Assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/plugins/OwlCarousel2-2.2.1/animate.css">
+<link href="~/Assets/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/instructors.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/instructors_responsive.css">
+
+
+<div>
+
+	<!-- Instructors -->
+
+	<div class="instructors">
+		<div class="instructors_background" style="background-image:url(/Assets/images/instructors_background.png)"></div>
+		<div class="container">
+			<div class="row" style="margin-bottom:5%">
+				<div class="col">
+					<h2 class="section_title text-center"> About The Producer @Model.Producer.Name</h2>
+				</div>
+			</div>
+			<div class="row instructors_row" style="margin-top:-5%">
+
+				<div class="col-lg-2  instructor_col"></div>
+				<!-- Instructor -->
+				<div class="col-lg-8  instructor_col">
+					<div class="instructor text-center">
+						<div class="instructor_image_container">
+							<div class="instructor_image"><img src="@Model.Producer.ImageUrl" alt=""></div>
+						</div>
+						<div class="instructor_name"><a class="text-primary">@Model.Producer.Name</a></div>
+						<div class="instructor_title">Teacher</div>
+						<div class="instructor_text">
+							<p>@Model.Producer.Bio</p>
+						</div>
+						<div class="instructor_social">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Top Teachers -->
+
+	<div class="teachers">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="section_title text-center"> Movies Produced By @Model.Producer.Name</h2>
+				</div>
+			</div>
+			<div class="row teachers_row">
+
+				@foreach (var movie in Model.Movies)
+				{
+					<!-- Actor -->
+					<div class="col-lg-4 col-md-6">
+						<div class="teacher d-flex flex-row align-items-center justify-content-start">
+							<div class="teacher_image"><div><img src="@movie.ImageUrl" alt=""></div></div>
+							<div class="teacher_content">
+								<div class="teacher_name">@Html.ActionLink(movie.Name, "WatchMovie", "Home", new { id = movie.MovieId }, new { @class = " " })</div>
+								<div class="teacher_title">@movie.YearOfRelease</div>
+								<div class="row">
+									<span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				}
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<script src="~/Assets/plugins/progressbar/progressbar.min.js"></script>
+<script src="~/Assets/plugins/video-js/video.min.js"></script>
+<script src="~/Assets/plugins/video-js/Youtube.min.js"></script>
+<script src="~/Assets/js/instructors.js"></script>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MoviePoint.Models.Producer>
+@{
+	ViewBag.Title = "ProducerDropDown";
+}
+
+
+
+<select class="form-control" name="ProducerId" >
+	@foreach (var item in Model)
+	{
+		<option value="@item.ProducerId">@item.Name</option>
+	}
+</select>
+

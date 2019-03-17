@@ -1,0 +1,103 @@
+﻿@model MoviePoint.Models.Actor
+@{
+	ViewBag.Title = "AddActor";
+}
+
+<hr><br />
+<div class="container">
+	<div class="border border-dark" style="padding:5%">
+		<div class="row">
+			<div class="col">
+				<h2 class="section_title text-center">Add A New Actor</h2>
+			</div>
+
+		</div>
+		<br />
+		<br />
+		<div class="row container">
+			<div class="col-6">
+				<form method="post" action="/Actor/Create" id="ActorAddForm" class="form-group">
+
+					<label>Actor Name</label>
+					<input type="text" name="Name" class="form-control" />
+					<br />
+
+					<label>Age</label>
+					<input type="number" name="Age" class="form-control" /><br />
+
+					<label>Bio</label>
+					<textarea name="Bio" class="form-control"></textarea>
+					<br />
+
+					<label>Select An Image</label>
+					<input name="ImageUrl" type="hidden" id="ImageUrlAddActor" />
+					<input type="file" id="imageUploadAddActor" accept=".png,.jpg,.jpeg" class="form-control" />
+					<br />
+
+					<input type="button" value="Create Actor" id="AddActorbtn" class="btn btn-sm btn-outline-success" />
+
+				</form>
+			</div>
+
+			<div class="col-4" style="padding-left:10%">
+				<img src="~/Assets/UploadedImages/placeholder-image.png" width="400" height="300" id="AddActorImage" style="float:left" />
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+
+
+
+</div>
+
+<hr />
+<script>
+	$('#imageUploadAddActor').change(function () {
+
+		var element = this;
+		var formData = new FormData();
+		var totalFiles = element.files.length;
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
+		$.ajax({
+			type: 'POST',
+			url: "/Shared/UploadImage",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			processData: false
+		}).done(function (response) {
+
+			console.log(response);
+			if (response.Success == true) {
+				$('#ImageUrlAddActor').val(response.ImageUrl);
+				$('#AddActorImage').attr("src", response.ImageUrl);
+			}
+		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Failure")
+		});
+	});
+
+
+	
+
+	$('#AddActorbtn').click(function () {
+		$.ajax({
+			type: 'POST',
+			url: "../Actor/AddActor",
+			data: $('#ActorAddForm').serialize(),
+		}).done(function (response) {
+			$('#actorDropDownContainer').html(" ");
+			$('#actorDropDownContainer').html(response);
+			DeFocus();
+			$('#actionContainer').html(" ");
+
+			
+		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Failure")
+		});
+	});
+</script>
+

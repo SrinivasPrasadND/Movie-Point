@@ -1,0 +1,91 @@
+﻿@model MoviePoint.Models.HomeVM
+@{
+	ViewBag.Title = "Movies";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/courses.css">
+<link rel="stylesheet" type="text/css" href="~/Assets/styles/courses_responsive.css">
+
+
+<!-- Language -->
+
+<div class="language">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="language_title">Place Where You All Your Favorite Movies</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Courses -->
+
+<div class="courses">
+	<div class="container">
+		<div class="row courses_row" id="loadDiv">
+			@{int index = 0; }
+			@foreach (var movie in Model.Movies)
+			{
+				<!-- Course -->
+				<div class="col-lg-4 course_col">
+					<div class="course">
+						<div class="course_image"><img src="@movie.ImageUrl" alt=""></div>
+						<div class="course_body">
+							<div class="course_title"><a href="course.html">@movie.Name</a></div>
+							<div class="course_info">
+								<ul>
+									<li><a href="">By : <b class="text-primary"> @Model.Producers[index++].Name </b></a></li>
+									<li><a href="#">@movie.Language</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+
+							@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = movie.MovieId }, new { @class = "btn btn-sm btn-outline-primary", style = "margin:auto" })
+						</div>
+					</div>
+				</div>
+
+			}
+
+
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<div class="load_more_button" ><a id="loadBtn">load more</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/styles/bootstrap4/popper.js"></script>
+<script src="~/Assets/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/Assets/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/Assets/plugins/easing/easing.js"></script>
+<script src="~/Assets/js/courses.js"></script>
+
+<script>
+	var pageCount = 0;
+	$('#loadBtn').click(function () {
+		pageCount++;
+		$.ajax({
+			url: "/Home/LoadMoreMovies",
+			data: { count: pageCount }
+		}).done(function (response) {
+			$('#loadDiv').append(response);
+			
+		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Failure")
+		});
+	});
+
+
+	
+		
+		
+
+</script>

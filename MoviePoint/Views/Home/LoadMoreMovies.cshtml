@@ -1,0 +1,30 @@
+﻿@model MoviePoint.Models.HomeVM
+@{
+	ViewBag.Title = "LoadMoreMovies";
+}
+
+@{int index = 0; }
+@foreach (var movie in Model.Movies)
+{
+	<!-- Course -->
+	<div class="col-lg-4 course_col">
+		<div class="course">
+			<div class="course_image"><img src="@movie.ImageUrl" alt=""></div>
+			<div class="course_body">
+				<div class="course_title"><a href="course.html">@movie.Name</a></div>
+				<div class="course_info">
+					<ul>
+						<li><a href="">By : <b class="text-primary"> @Model.Producers[index++].Name </b></a></li>
+						<li><a href="#">@movie.Language</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+
+				@Html.ActionLink("Watch Now", "WatchMovie", "Home", new { id = movie.MovieId }, new { @class = "btn btn-sm btn-outline-primary", style = "margin:auto" })
+			</div>
+		</div>
+	</div>
+
+}
+

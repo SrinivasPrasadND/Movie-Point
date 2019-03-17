@@ -1,0 +1,88 @@
+﻿@model MoviePoint.Models.Producer
+@{
+	ViewBag.Title = "Update";
+}
+<hr />
+<br />
+<div class="container">
+
+	<div class="border border-dark" style="padding:5%">
+
+		<div class="row">
+			<div class="col">
+				<h2 class="section_title text-center">Update This Producer</h2>
+			</div>
+
+		</div>
+		<br />
+		<br />
+		<div class="row">
+			<div class="col-6">
+				<form method="post" action="/Producer/Update" id="categoryUpdateForm" class="form-group">
+
+					<input type="hidden" name="ProducerId" value="@Model.ProducerId" />
+
+					<label>Producer Name</label>
+					<input name="Name" class="form-control" value="@Model.Name" />
+					<br />
+					<label>Age</label>
+					<input name="Age" class="form-control" value="@Model.Age" />
+					<br />
+
+					<label>Bio</label>
+					<textarea name="Bio" class="form-control">@Model.Bio</textarea>
+					<br />
+
+					<label>Select An Image</label>
+					<input name="ImageUrl" type="hidden" id="ImageUrl" value="@Model.ImageUrl" />
+					<input type="file" id="imageUpload" accept=".png,.jpg,.jpeg" class="form-control" />
+
+					<br />
+
+					<input type="submit" id="updateBtn" value="Update Producer" class="btn btn-sm btn-outline-primary" />
+
+				</form>
+
+			</div>
+			<div class="col-1">
+
+			</div>
+			<div class="col-4">
+				<img src="@Model.ImageUrl" width="400" height="300" id="categoryImage" />
+			</div>
+			<div class="col-1">
+
+			</div>
+		</div>
+	</div>
+
+	</div>
+	<hr />
+	<script>
+		$('#imageUpload').change(function () {
+			var element = this;
+			var formData = new FormData();
+			var totalFiles = element.files.length;
+			for (var i = 0; i < totalFiles; i++) {
+				var file = element.files[i];
+				formData.append("Photo", file);
+			}
+			$.ajax({
+				type: 'POST',
+				url: "/Shared/UploadImage",
+				data: formData,
+				dataType: 'json',
+				contentType: false,
+				processData: false
+			}).done(function (response) {
+				debugger;
+				console.log(response);
+				if (response.Success == true) {
+					$('#ImageUrl').val(response.ImageUrl);
+					$('#categoryImage').attr("src", response.ImageUrl);
+				}
+			}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+				alert("Failure")
+			});
+		});
+	</script>

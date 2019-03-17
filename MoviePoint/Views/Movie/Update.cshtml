@@ -1,0 +1,120 @@
+﻿@model MoviePoint.Models.MovieVM
+@{
+	ViewBag.Title = "Update";
+}
+
+<hr><br />
+<div class="container">
+	<div class="border border-dark" style="padding:5%">
+		<div class="row">
+			<div class="col">
+				<h2 class="section_title text-center">Update This Movie</h2>
+			</div>
+
+		</div>
+		<br />
+		<br />
+		<div class="row container">
+			<div class="col-6">
+				<form method="post" action="/Movie/Update" id="categoryCreteForm" class="form-group">
+
+					<input type="hidden" value="@Model.MovieId" name="MovieId" />
+
+					<label>Movie Name</label>
+					<input type="text" name="Name" value="@Model.Name" class="form-control" />
+					<br />
+
+					<label>Language</label>
+					<input type="text" name="Language" value="@Model.Language" class="form-control" />
+					<br />
+
+					<label>Year Of Release</label>
+					<input type="text" name="YearOfRelease" value="@Model.YearOfRelease" class="form-control" /><br />
+
+
+					<label class="form-label">Select Producer For This Movie</label>
+					<select class="form-control" name="ProducerId">
+						@foreach (var item in Model.Producers)
+						{
+							if (item.ProducerId.Equals(Model.ProducerId))
+							{
+								<option value="@item.ProducerId" selected>@item.Name</option>
+							}
+							else
+							{
+								<option value="@item.ProducerId">@item.Name</option>
+							}
+
+
+						}
+					</select>
+					<br />
+					<label class="form-label">Select Actors For This Movie</label>
+					<select class="form-control" name="ActorsIds" multiple>
+						@foreach (var item in Model.Actors)
+						{
+							<option value="@item.ActorId">@item.Name</option>
+						}
+					</select>
+					<br />
+
+					<label>Select An Image</label>
+					<input name="ImageUrl" type="hidden" id="ImageUrl" value="@Model.ImageUrl" />
+					<input type="file" id="imageUpload" accept=".png,.jpg,.jpeg" class="form-control" />
+					<br />
+
+					<label>Movie Description</label>
+					<textarea name="Description" class="form-control">@Model.Description</textarea>
+					<br />
+
+					<label>Movie URL</label>
+					<input type="text" name="MovieUrl" value="@Model.MovieUrl" class="form-control" />
+					<br />
+
+					<input type="submit" value="Update Movie" id="fromCreateBtn" class="btn btn-sm btn-outline-success" />
+
+				</form>
+			</div>
+
+			<div class="col-4" style="padding-left:10%">
+				<img src="@Model.ImageUrl" width="400" height="300" id="categoryImage" style="float:left" />
+			</div>
+			<div class="col-1"></div>
+		</div>
+	</div>
+
+
+
+</div>
+
+<hr />
+<script>
+	$('#imageUpload').change(function () {
+
+		var element = this;
+		var formData = new FormData();
+		var totalFiles = element.files.length;
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
+		$.ajax({
+			type: 'POST',
+			url: "/Shared/UploadImage",
+			data: formData,
+			dataType: 'json',
+			contentType: false,
+			processData: false
+		}).done(function (response) {
+
+			console.log(response);
+			if (response.Success == true) {
+				$('#ImageUrl').val(response.ImageUrl);
+				$('#categoryImage').attr("src", response.ImageUrl);
+			}
+		}).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+			alert("Failure")
+		});
+	});
+</script>
+
