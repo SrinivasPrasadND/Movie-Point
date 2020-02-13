@@ -87,10 +87,11 @@ namespace MoviePoint.Controllers
 				{
 					RemoveDetails(movieVM.MovieId);
 					AddDetailToDb(movieVM.ActorsIds, movieVM.MovieId);
+
 				}
 			}
-			catch (Exception e) {
-				Console.WriteLine(e.ToString());
+			catch (Exception ex) {
+				Console.WriteLine(ex.ToString());
 			}
 
 
