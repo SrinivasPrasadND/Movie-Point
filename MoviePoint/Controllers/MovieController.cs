@@ -40,7 +40,6 @@ namespace MoviePoint.Controllers
 			db.SaveChanges();
 
 			AddDetailToDb(movieVM.ActorsIds, movie.MovieId);
-
 			return RedirectToAction("Index");
 		}
 
@@ -91,8 +90,8 @@ namespace MoviePoint.Controllers
 
 				}
 			}
-			catch (Exception e) {
-				Console.WriteLine(e.ToString());
+			catch (Exception ex) {
+				Console.WriteLine(ex.ToString());
 			}
 
 
