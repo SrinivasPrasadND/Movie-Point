@@ -40,7 +40,6 @@ namespace MoviePoint.Controllers
 			db.SaveChanges();
 
 			AddDetailToDb(movieVM.ActorsIds, movie.MovieId);
-
 			return RedirectToAction("Index");
 		}
 
@@ -88,7 +87,6 @@ namespace MoviePoint.Controllers
 				{
 					RemoveDetails(movieVM.MovieId);
 					AddDetailToDb(movieVM.ActorsIds, movieVM.MovieId);
-
 				}
 			}
 			catch (Exception e) {
